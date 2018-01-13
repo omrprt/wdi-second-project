@@ -9,9 +9,9 @@
     "seed": "node db/seeds"
   },
   "engines": {
-    "node": "8.x.x"
+    "node": "9.2.0"
   },
-  "author": "Mike Hayden <mickyginger@gmail.com> (https://github.com/mickyginger)",
+  "author": "Omar Portillo <omrprt@aol.com> (https://github.com/omrprt)",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.4.7",
