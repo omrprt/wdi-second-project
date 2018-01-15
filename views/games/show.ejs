@@ -1,1 +1,25 @@
-<h2>Games</h2>
+
+<h2><%= game.title %></h2>
+<img src="<%= game.image %>" alt="<%= game.name %>">
+
+  <% game.comments.forEach((comment) => { %>
+      <p><%= comment.content %></p>
+      <small><%= comment.createdBy.username %></small>
+
+      <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+        <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+      <% } %>
+    <% }) %>
+
+    <% if(locals.isLoggedIn) { %>
+      <section>
+        <h4>Leave a comment</h4>
+        <form method="POST" action="/games/<%= game.id %>/comments">
+          <textarea name="content" id="content" placeholder="Comment"></textarea>
+          <button class="button">Leave a comment</button>
+        </form>
+      </section>
+    <% } %>

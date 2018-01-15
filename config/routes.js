@@ -11,8 +11,14 @@ router.route('/games')
   .get(games.index)
   .post(games.create);
 
-// router.route('/users')
-//   .render('statics/users');
+router.route('/games/:id')
+  .get(games.show);
+
+router.route('/games/:id/comments')
+  .post(games.createComment);
+
+router.route('/games/:id/comments/:commentId')
+  .delete(games.deleteComment);
 
 router.route('/register')
   .get(registrations.new)

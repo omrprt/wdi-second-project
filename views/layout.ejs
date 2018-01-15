@@ -16,11 +16,15 @@
             <li><a href="/profile/mygames">My Games</a></li>
             <li><a href="/profile/mywishlist">Wish List</a></li>
             <li><a href="/profile/mylog">Play Log</a></li>
-            <li><a href="/users/">Gamers</a></li>
+            <li><a href="/statics/users/">Gamers</a></li>
             <li><a href="/logout">Logout</a></li>
-          </ul>
         </header>
         <main>
+          <% if(locals.isLoggedIn) { %>
+
+    <h4>LOGGED IN</h4>
+
+<% } %>
           <%- body %>
         </main>
       </body>

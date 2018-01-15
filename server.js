@@ -33,7 +33,7 @@ app.use(session({
 
 app.use(flash());
 
-// app.use(customResponses);
+app.use(customResponses);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride(function (req) {
@@ -46,8 +46,8 @@ app.use(methodOverride(function (req) {
 
 if(env === 'development') app.use(morgan('dev'));
 
-// app.use(authentication);
+app.use(authentication);
 app.use(routes);
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}`));
