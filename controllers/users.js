@@ -13,9 +13,6 @@ function indexRoute(req, res, next) {
 }
 
 function addGameToCollectionRoute(req, res, next) {
-  console.log(req.body);
-  // req.body.game = req.game;
-
   User
     .findById(req.params.id)
     .exec()
@@ -24,6 +21,28 @@ function addGameToCollectionRoute(req, res, next) {
 
       user.collectionLog.push(req.body.id);
       console.log('the user', user);
+      return user.save();
+    })
+    .then((user) => {
+      res.redirect(`/users/${user.id}`);
+    })
+    .catch((err) => {
+      if(err.name === 'ValidationError') {
+        return res.badRequest(`/users/${req.params.id}`, err.toString());
+      }
+      next(err);
+    });
+}
+
+function addGameToWishListRoute(req, res, next) {
+  console.log(req);
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      console.log(req.body.id);
+      user.wishList.push(req.body.id);
       return user.save();
     })
     .then((user) => {
@@ -58,7 +77,7 @@ function deleteCollectionLogRoute(req, res, next) {
 module.exports = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
-  // addGameToWishList: addGameToWishListRoute,
+  addGameToWishList: addGameToWishListRoute,
   deleteCollection: deleteCollectionLogRoute
 
 };

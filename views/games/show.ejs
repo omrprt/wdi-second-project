@@ -2,12 +2,17 @@
 <h2><%= game.title %></h2>
 <img src="<%= game.image %>" alt="<%= game.name %>">
 
-
+  <% if(locals.isLoggedIn) { %>
 <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
   <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
   <button class="button">add to collection</button>
 </form>
 
+<form method="POST" action="/users/<%= locals.user.id %>/wishList">
+  <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+  <button class="button">add to Wish List</button>
+</form>
+<% } %>
 
 
 <% game.comments.forEach((comment) => { %>

@@ -13,9 +13,9 @@ router.route('/users')
 
 router.route('/users/:id/collectionlog')
   .post(users.addGameToCollection);
-// 
-// router.route('/users/:id/wishlist')
-//   .post(users.addGameToWishList);
+
+router.route('/users/:id/wishList')
+  .post(users.addGameToWishList);
 
 router.route('/games')
   .get(games.index)
