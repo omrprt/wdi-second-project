@@ -20,6 +20,10 @@ body {
   }
 }
 
+.logo{
+  height: 60px;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -49,4 +53,8 @@ body {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.gameImage {
+  max-height: 280px;
 }

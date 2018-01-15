@@ -50,6 +50,11 @@ gulp.task('assets', () => {
     .pipe(gulp.dest('public/assets'));
 });
 
+gulp.task('images', () => {
+  return gulp.src('src/images/**/*.{jpg,jpeg,JPG,png,gif,svg}')
+    .pipe(gulp.dest('public/images'));
+});
+
 gulp.task('serve', sequence('clean', ['es6', 'sass']), () => {
   browserSync.init({
     proxy: 'http://localhost:3000',
