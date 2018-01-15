@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, trim: true, unique: true },
   password: { type: String, required: true },
   collectionLog: [{ type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
-  wishList: {type: String},
+  wishList: [{ type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
   playLogs: { type: String }
 });
 
