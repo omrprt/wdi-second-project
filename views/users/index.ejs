@@ -1,0 +1,17 @@
+<h2>Community Gamers</h2>
+
+<% users.forEach((user) => { %>
+  <p>
+    <strong>Player:</strong> <%= user.username %>
+  </p>
+  <p>Collection:
+  <% user.collectionLog.forEach((game) => { %>
+    <%= game.title %>,
+  <% }); %>
+  </p>
+  <p>Wish List:
+  <% user.wishList.forEach((game) => { %>
+    <%= game.title %>,
+  <% }); %>
+  </p>
+<% }) %>

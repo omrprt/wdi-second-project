@@ -2,9 +2,17 @@
 <h2><%= game.title %></h2>
 <img src="<%= game.image %>" alt="<%= game.name %>">
 
-  <% game.comments.forEach((comment) => { %>
+
+<form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
+  <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+  <button class="button">add to collection</button>
+</form>
+
+
+
+<% game.comments.forEach((comment) => { %>
       <p><%= comment.content %></p>
-      <small><%= comment.createdBy.username %></small>
+      <small>Comment by: <%= comment.createdBy.username %></small>
 
       <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
         <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">

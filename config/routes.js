@@ -2,10 +2,20 @@ const router = require('express').Router();
 const sessions = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
 const games = require('../controllers/games');
+const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 
 
 router.get('/', (req, res) => res.render('statics/index'));
+
+router.route('/users')
+  .get(users.index);
+
+router.route('/users/:id/collectionlog')
+  .post(users.addGameToCollection);
+// 
+// router.route('/users/:id/wishlist')
+//   .post(users.addGameToWishList);
 
 router.route('/games')
   .get(games.index)

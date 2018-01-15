@@ -11,20 +11,25 @@
     <ul>
       <li><h1><a href="/">Meeple Gamer</a></h1></l1>
         <li><a href="/games">Games</a></li>
-          <li><a href="/register">Register</a></li>
-          <li><a href="/login">Login</a></li>
-            <li><a href="/profile/mygames">My Games</a></li>
-            <li><a href="/profile/mywishlist">Wish List</a></li>
-            <li><a href="/profile/mylog">Play Log</a></li>
-            <li><a href="/statics/users/">Gamers</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </header>
-        <main>
-          <% if(locals.isLoggedIn) { %>
-
-    <h4>LOGGED IN</h4>
+<li><a href="/users/">Community</a></li>
+  <% if (locals.isLoggedIn) { %>
+  <li><a href="/profile/mygames">My Profile</a></li>
+  <li><a href="/profile/mywishlist">Wish List</a></li>
+  <li><a href="/profile/mylog">Play Log</a></li>
+    <li><a href="/logout">Logout</a></li>
+    <% } else { %>
+      <li><a href="/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+      <% } %>
+<% if(locals.isLoggedIn) { %>
+  <li><h4><%= locals.user.username %></h4></li>
 
 <% } %>
+</ul>
+        </header>
+        <main>
+
+
           <%- body %>
         </main>
       </body>

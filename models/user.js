@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
 const userSchema = new mongoose.Schema({
   firstName: { type: String, minlength: 2, required: true, trim: true },
   lastName: { type: String, minlength: 2, required: true, trim: true },
@@ -9,7 +8,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, trim: true, unique: true },
   password: { type: String, required: true },
   collectionLog: [{ type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
-  wishList: [{ type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
+  wishList: [{type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
   playLogs: { type: String }
 });
 
