@@ -1,37 +1,70 @@
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col col-lg-4"><img class="img-fluid gameImage" src="<%= game.image %>" alt="<%= game.title %>">
+    </div>
+    <div class="col col-lg-8">
+      <div class="row">
+        <div class= "col-lg-9">
+          <h2>
+            <h2><%= game.title %></h2>
+          </h2>
+        </div>
 
-<h2><%= game.title %></h2>
-<img src="<%= game.image %>" alt="<%= game.name %>">
+      </div>
+      <p class="font-italic">From the publisher:</p>
+      <p><%= game.description %>
+      </p>
 
-  <% if(locals.isLoggedIn) { %>
-<form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
-  <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-  <button class="button">add to collection</button>
-</form>
-
-<form method="POST" action="/users/<%= locals.user.id %>/wishList">
-  <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-  <button class="button">add to Wish List</button>
-</form>
-<% } %>
-
-<% game.comments.forEach((comment) => { %>
-      <p><%= comment.content %></p>
-      <small>Comment by: <%= comment.createdBy.username %></small>
-
-      <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-        <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button>Delete</button>
+      <% if(locals.isLoggedIn) { %>
+        <div class="row loggedInNav">
+        <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
+        <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+        <button class="btn btn-primary">Add to my collection</button>
         </form>
-      <% } %>
-    <% }) %>
 
-    <% if(locals.isLoggedIn) { %>
-      <section>
-        <h4>Leave a comment</h4>
-        <form method="POST" action="/games/<%= game.id %>/comments">
-          <textarea name="content" id="content" placeholder="Comment"></textarea>
-          <button class="button">Leave a comment</button>
+        <form method="POST" action="/users/<%= locals.user.id %>/wishList">
+        <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+        <button class="btn btn-primary">Add to my wish list</button>
         </form>
-      </section>
-    <% } %>
+
+        <form method="POST" action="/users/<%= locals.user.id %>/playLog">
+        <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+        <button class="btn btn-primary">Log New Game</button>
+        </div>
+        </form>
+        <% } %>
+
+      </div>
+    </div>
+  <div class="dropdown-divider"></div>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-2">
+        <h4>Comments</h4>
+      </div>
+      <div class="col col-lg-8">
+        <% game.comments.forEach((comment) => { %>
+          <div class="commentContent">
+          <p><small><%= comment.createdBy.username %> commented: </small><%= comment.content %></p>
+          <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+            <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-primary">Delete</button>
+            </form>
+            <% } %>
+            </div>
+  <div class="dropdown-divider"></div>
+            <% }) %>
+
+            <% if(locals.isLoggedIn) { %>
+              <section>
+              <form method="POST" action="/games/<%= game.id %>/comments">
+              <textarea class="form-control leaveComment" name="content" id="content" placeholder="Comment"></textarea>
+              <button class="btn btn-primary">Leave a comment</button>
+              </form>
+              </section>
+              <% } %>
+            </div>
+          </div>

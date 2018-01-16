@@ -58,3 +58,17 @@ body {
 .gameImage {
   max-height: 280px;
 }
+
+.loggedInNav{
+  display: flex;
+  justify-content: space-around;
+}
+
+.commentContent{
+  background-color: lightsteelblue;
+  border-radius: 3px;
+}
+
+.leaveComment{
+  margin-top: 10px;
+}

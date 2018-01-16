@@ -24,6 +24,7 @@ const gameSchema = new mongoose.Schema({
   publisher: String,
   publisherURL: String,
   playerRating: String,
+  buy: String,
   comments: [ commentSchema ]
 });
 

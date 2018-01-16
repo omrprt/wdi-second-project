@@ -32,7 +32,8 @@ User
         illustrator: String,
         publisher: 'Z-Man',
         publisherURL: 'https://www.zmangames.com/en/index/',
-        playerRating: '4'
+        playerRating: '4',
+        buy: 'https://www.amazon.co.uk/Z-Man-Games-ZMG71100-Pandemic-Board/dp/B00A2HD40E/ref=sr_1_1?s=kids&ie=UTF8&qid=1516062109&sr=1-1&keywords=pandemic'
       },{
         title: 'Catan',
         image: 'https://www.catan.com/files/styles/lightboxy/public/packshots/catan-5th-ed-cover-3d_150118.png?itok=cwb5ZrMU',
