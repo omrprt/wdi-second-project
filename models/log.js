@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const logSchema = new mongoose.Schema({
   datePlayed: {type: String},
-  winCondition: {type: Number, required: true},
+  winCondition: {type: String, required: true},
   result: {type: String, required: true},
   gameNotes: String,
   endGameImage: {type: String},
