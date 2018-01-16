@@ -19,7 +19,8 @@ router.route('/users/:id/wishList')
   .post(users.addGameToWishList);
 
 router.route('/playlog')
-  .get(playLog.new);
+  .get(playLog.new)
+  .post(playLog.add);
 
 router.route('/games')
   .get(games.index)
