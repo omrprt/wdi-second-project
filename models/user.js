@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   collectionLog: [{ type: mongoose.Schema.ObjectId, ref: 'Game'}],
   wishList: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
-  playLog: { type: mongoose.Schema.ObjectId, ref: 'PlayLog'}
+  playLog: [{ type: mongoose.Schema.ObjectId, ref: 'Log'}]
 });
 
 userSchema

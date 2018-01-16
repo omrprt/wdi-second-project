@@ -1,19 +1,17 @@
-<h2>My Play Log</h2>
+<h2>My <%= game.title %> Play Log</h2>
+
+
 
 <div class="row">
 
-<form  method="POST" action="/playLog">
-  <div class="form-group">
-    <label for="gameTitle">Game Title</label>
-    <input type="text" class="form-control" id="gameTitle" placeholder="Catan" name="gameTitle">
-  </div>
+<form  method="POST" action="/logs/<%= game.id %>">
   <div class="form-group">
     <label for="datePLayed">Date Played</label>
     <input type="text" class="form-control" id="datePLayed" placeholder="Ex: 1st November 2017" name="datePLayed">
   </div>
   <div class="form-group">
     <label for="winCondition">Winning Condition</label>
-    <input type="text" class="form-control" id="winCondition" placeholder="Get 12 Points" name="winCondition">
+    <input type="text" class="form-control" id="winCondition" placeholder="Ex: First to 12 Points" name="winCondition">
   </div>
   <div class="form-check form-check-inline">
     <p>Result:

@@ -25,7 +25,8 @@ const gameSchema = new mongoose.Schema({
   publisherURL: String,
   playerRating: String,
   buy: String,
-  comments: [ commentSchema ]
+  comments: [ commentSchema ],
+  logs: [{ type: mongoose.Schema.ObjectId, ref: 'Log'}]
 });
 
 gameSchema.methods.belongsTo = function belongsTo(user) {

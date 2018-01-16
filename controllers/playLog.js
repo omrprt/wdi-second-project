@@ -1,48 +1,52 @@
 const User = require('../models/user');
+const Game = require('../models/game');
+const Log = require('../models/log');
 
 function indexRoute(req, res) {
-  return res.render('playLog/new');
-}
-
-function addPlayLogRoute(req, res, next) {
-  User
+  Game
     .findById(req.params.id)
     .exec()
-    .then((user) => {
-      if(!user) return res.notFound();
-      console.log(req.body.id);
-      user.playLog.push(req.body.id);
-      return user.save();
-    })
-    .then((user) => {
-      res.redirect(`/users/${user.id}`);
-    })
-    .catch((err) => {
-      if(err.name === 'ValidationError') {
-        return res.badRequest(`/users/${req.params.id}`, err.toString());
-      }
-      next(err);
+    .then(game => {
+      return res.render('playLog/new', { game });
     });
 }
 
 function addToPlayLogRoute(req, res, next) {
-  console.log(req);
-  User
-    .findById(req.params.id)
-    .exec()
-    .then((user) => {
-      if(!user) return res.notFound();
-      user.gameLog.push(req.body.id);
-      return user.save();
-    })
-    .then((user) => {
-      res.redirect(`/users/${user.id}`);
-    })
-    .catch((err) => {
-      if(err.name === 'ValidationError') {
-        return res.badRequest(`/users/${req.params.id}`, err.toString());
-      }
-      next(err);
+  req.body.createdBy = req.user;
+  req.body.game = req.params.id;
+  console.log('in add log', req.body);
+
+  Log
+    .create(req.body)
+    .then(log => {
+
+      User
+        .findById(log.createdBy._id)
+        .exec()
+        .then((user) => {
+          user.playLog.push(log._id);
+          return user.save();
+        })
+        .catch((err) => {
+          if(err.name === 'ValidationError') {
+            return res.badRequest(`/users/${req.params.id}`, err.toString());
+          }
+          next(err);
+        });
+
+      Game
+        .findById(log.game._id)
+        .exec()
+        .then((game) => {
+          game.logs.push(log._id);
+          return game.save();
+        })
+        .catch((err) => {
+          if(err.name === 'ValidationError') {
+            return res.badRequest(`/users/${req.params.id}`, err.toString());
+          }
+          next(err);
+        });
     });
 }
 

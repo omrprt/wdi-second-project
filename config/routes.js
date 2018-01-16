@@ -4,7 +4,7 @@ const registrations = require('../controllers/registrations');
 const games = require('../controllers/games');
 const users = require('../controllers/users');
 const playLog = require('../controllers/playLog');
-// const secureRoute = require('../lib/secureRoute');
+const secureRoute = require('../lib/secureRoute');
 
 
 router.get('/', (req, res) => res.render('statics/index'));
@@ -18,9 +18,12 @@ router.route('/users/:id/collectionlog')
 router.route('/users/:id/wishList')
   .post(users.addGameToWishList);
 
-router.route('/playlog')
+router.route('/logs/:id')
   .get(playLog.new)
   .post(playLog.add);
+
+router.route('/myprofile')
+  .get(users.myProfile);
 
 router.route('/games')
   .get(games.index)

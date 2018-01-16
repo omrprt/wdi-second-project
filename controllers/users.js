@@ -12,6 +12,18 @@ function indexRoute(req, res, next) {
     .catch(next);
 }
 
+function myProfileRoute(req, res, next) {
+  User
+    .find()
+    .populate()
+    .exec()
+    .then((users) => {
+      if(!users) return res.notFound();
+      return res.render('users/myprofile', { users });
+    })
+    .catch(next);
+}
+
 function addGameToCollectionRoute(req, res, next) {
   User
     .findById(req.params.id)
@@ -34,13 +46,11 @@ function addGameToCollectionRoute(req, res, next) {
 }
 
 function addGameToWishListRoute(req, res, next) {
-  console.log(req);
   User
     .findById(req.params.id)
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      console.log(req.body.id);
       user.wishList.push(req.body.id);
       return user.save();
     })
@@ -79,5 +89,6 @@ module.exports = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
   addGameToWishList: addGameToWishListRoute,
-  deleteCollection: deleteCollectionLogRoute
+  deleteCollection: deleteCollectionLogRoute,
+  myProfile: myProfileRoute
 };
