@@ -1,5 +1,18 @@
 const User = require('../models/user');
 
+function homePageRoute(req, res, next) {
+  User
+    .find()
+    .populate('collectionLog wishList playLog')
+    .exec()
+    .then((user) => {
+      console.log(req.user);
+      if(!user) return res.notFound();
+      return res.render('statics/index', { user });
+    })
+    .catch(next);
+}
+
 function indexRoute(req, res, next) {
   User
     .find()
@@ -14,12 +27,12 @@ function indexRoute(req, res, next) {
 
 function myProfileRoute(req, res, next) {
   User
-    .find()
-    .populate()
+    .findById(req.user.id)
+    .populate('collectionLog wishList playLog')
     .exec()
-    .then((users) => {
-      if(!users) return res.notFound();
-      return res.render('users/myprofile', { users });
+    .then((user) => {
+      if(!user) return res.notFound();
+      return res.render('users/myprofile', { user });
     })
     .catch(next);
 }
@@ -34,8 +47,8 @@ function addGameToCollectionRoute(req, res, next) {
       user.collectionLog.push(req.body.id);
       return user.save();
     })
-    .then((user) => {
-      res.redirect(`/users/${user.id}`);
+    .then(() => {
+      res.redirect('back');
     })
     .catch((err) => {
       if(err.name === 'ValidationError') {
@@ -54,8 +67,8 @@ function addGameToWishListRoute(req, res, next) {
       user.wishList.push(req.body.id);
       return user.save();
     })
-    .then((user) => {
-      res.redirect(`/users/${user.id}`);
+    .then(() => {
+      res.redirect('back');
     })
     .catch((err) => {
       if(err.name === 'ValidationError') {
@@ -78,17 +91,16 @@ function deleteCollectionLogRoute(req, res, next) {
       return user.save();
     })
     .then((user) => {
-      res.redirect(`/users/${user.id}`);
+      res.redirect('back');
     })
     .catch(next);
 }
-
-
 
 module.exports = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
   addGameToWishList: addGameToWishListRoute,
   deleteCollection: deleteCollectionLogRoute,
-  myProfile: myProfileRoute
+  myProfile: myProfileRoute,
+  homePage: homePageRoute
 };

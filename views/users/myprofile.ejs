@@ -1,4 +1,34 @@
 <div class="row">
-<h2>My Profile</h2>
+  <h2>My Profile</h2>
 </div>
-<%= locals.user.playLog %>
+<div class="row">
+  <div class="col-lg-8">
+  <p> Name:  <%= user.firstName %> <%= user.lastName %></p>
+  <p> UserName: <%= user.username %> </p>
+  <p> Email: <%= user.email %> </p>
+  </div>
+  <div class="col-lg-4 sideCard">
+    <div class="row">
+      <h5 class="card-header">MY GAME COLLECTION</h5>
+  </div>
+  <div class="card-body row">
+    <ul>
+        <% user.collectionLog.forEach((game) => { %>
+          <li><%= game.title %></li>
+        <% }); %>
+    </ul>
+    </div>
+    <div class="row">
+      <h5 class="card-header">MY WISH LIST</h5>
+    </div>
+    <div class="card-body row">
+      <ul>
+          <% user.wishList.forEach((game) => { %>
+            <li><%= game.title %></li>
+          <% }); %>
+          </ul>
+      </div>
+  </div>
+</div>
+<div class="row">
+</div>

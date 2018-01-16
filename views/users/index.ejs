@@ -4,24 +4,21 @@
     <div class="card">
       <h5 class="card-header"><strong>Player:</strong> <%= user.username %></h5>
       <div class="card-body row">
-        <div class="col-lg-5">
           <h6 class="card-title">Collection: </h6>
-        </div>
-        <div class="col-lg-7">
+        <ul>
           <% user.collectionLog.forEach((game) => { %>
-            <%= game.title %>,
+          <li>  <%= game.title %></li>
           <% }); %>
-        </div>
+          </ul>
       </div>
       <div class="dropdown-divider"></div>
       <div class="card-body row">
-        <div class="col-lg-5">
           <h6 class="card-title">Wish List: </h6>
-        </div>
-        <div class="col-lg-7">
+        <ul>
           <% user.wishList.forEach((game) => { %>
-            <%= game.title %>,
+            <li><%= game.title %></li>
           <% }) %>
+          <ul>
         </div>
       </div>
     </div>

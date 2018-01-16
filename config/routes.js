@@ -6,8 +6,8 @@ const users = require('../controllers/users');
 const playLog = require('../controllers/playLog');
 const secureRoute = require('../lib/secureRoute');
 
-
-router.get('/', (req, res) => res.render('statics/index'));
+router.route('/')
+  .get(users.homePage);
 
 router.route('/users')
   .get(users.index);
