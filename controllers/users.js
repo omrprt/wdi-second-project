@@ -3,7 +3,7 @@ const User = require('../models/user');
 function indexRoute(req, res, next) {
   User
     .find()
-    .populate('collectionLog')
+    .populate('collectionLog wishList')
     .exec()
     .then((users) => {
       if(!users) return res.notFound();
@@ -20,7 +20,6 @@ function addGameToCollectionRoute(req, res, next) {
       if(!user) return res.notFound();
 
       user.collectionLog.push(req.body.id);
-      console.log('the user', user);
       return user.save();
     })
     .then((user) => {
@@ -74,10 +73,11 @@ function deleteCollectionLogRoute(req, res, next) {
     .catch(next);
 }
 
+
+
 module.exports = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
   addGameToWishList: addGameToWishListRoute,
   deleteCollection: deleteCollectionLogRoute
-
 };

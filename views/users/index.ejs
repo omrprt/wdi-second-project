@@ -1,17 +1,29 @@
 <h2>Community Gamers</h2>
-
 <% users.forEach((user) => { %>
-  <p>
-    <strong>Player:</strong> <%= user.username %>
-  </p>
-  <p>Collection:
-  <% user.collectionLog.forEach((game) => { %>
-    <%= game.title %>,
-  <% }); %>
-  </p>
-  <p>Wish List:
-  <% user.wishList.forEach((game) => { %>
-    <%= game.title %>,
-  <% }); %>
-  </p>
+  <div class="col-lg-4">
+    <div class="card">
+      <h5 class="card-header"><strong>Player:</strong> <%= user.username %></h5>
+      <div class="card-body row">
+        <div class="col-lg-5">
+          <h6 class="card-title">Collection: </h6>
+        </div>
+        <div class="col-lg-7">
+          <% user.collectionLog.forEach((game) => { %>
+            <%= game.title %>,
+          <% }); %>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="card-body row">
+        <div class="col-lg-5">
+          <h6 class="card-title">Wish List: </h6>
+        </div>
+        <div class="col-lg-7">
+          <% user.wishList.forEach((game) => { %>
+            <%= game.title %>,
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% }) %>

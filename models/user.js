@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, minlength: 2, required: true, trim: true },
   lastName: { type: String, minlength: 2, required: true, trim: true },
   username: { type: String, required: true, trim: true, unique: true },
   email: { type: String, required: true, trim: true, unique: true },
   password: { type: String, required: true },
-  collectionLog: [{ type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
-  wishList: [{type: mongoose.Schema.ObjectId, ref: 'Game', required: true }],
-  playLogs: { type: String }
+  collectionLog: [{ type: mongoose.Schema.ObjectId, ref: 'Game'}],
+  wishList: [{type: mongoose.Schema.ObjectId, ref: 'Game'}],
+  playLog: { type: mongoose.Schema.ObjectId, ref: 'PlayLog'}
 });
 
 userSchema

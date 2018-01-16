@@ -1,0 +1,39 @@
+<h2>My Play Log</h2>
+
+<div class="row">
+
+<form  method="POST" action="/playLog">
+  <div class="form-group">
+    <label for="gameTitle">Game Title</label>
+    <input type="text" class="form-control" id="gameTitle" placeholder="Catan" name="gameTitle">
+  </div>
+  <div class="form-group">
+    <label for="datePLayed">Date Played</label>
+    <input type="text" class="form-control" id="datePLayed" placeholder="Ex: 1st November 2017" name="datePLayed">
+  </div>
+  <div class="form-group">
+    <label for="winCondition">Winning Condition</label>
+    <input type="text" class="form-control" id="winCondition" placeholder="Get 12 Points" name="winCondition">
+  </div>
+  <div class="form-check form-check-inline">
+    <p>Result:
+  <input class="form-check-input" type="radio" id="result1" value="Won" name="result">
+  <label class="form-check-label" for="result1">Won</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" id="result2" value="Lost" name="result">
+  <label class="form-check-label" for="result2">Lost</label>
+</p>
+</div>
+<div class="form-group">
+  <label for="gameNotes">Game Notes</label>
+  <input type="text" class="form-control" id="gameNotes" placeholder="Ex: Strategies/Players" name="gameNotes">
+</div>
+
+<div class="form-group">
+  <label for="endGameImage">URL of your Image URL</label>
+  <input type="text" class="form-control" id="endGameImage" placeholder="Ex: /images/november.jpg'" name="endGameImage">
+</div>
+  <button class="btn btn-primary">Submit</button>
+</form>
+</div>

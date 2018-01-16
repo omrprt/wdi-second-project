@@ -3,7 +3,8 @@ const sessions = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
 const games = require('../controllers/games');
 const users = require('../controllers/users');
-const secureRoute = require('../lib/secureRoute');
+const playLog = require('../controllers/playLog');
+// const secureRoute = require('../lib/secureRoute');
 
 
 router.get('/', (req, res) => res.render('statics/index'));
@@ -16,6 +17,9 @@ router.route('/users/:id/collectionlog')
 
 router.route('/users/:id/wishList')
   .post(users.addGameToWishList);
+
+router.route('/playlog')
+  .get(playLog.new);
 
 router.route('/games')
   .get(games.index)
@@ -42,6 +46,5 @@ router.route('/logout')
   .get(sessions.delete);
 
 router.all('*', (req, res) => res.notFound());
-
 
 module.exports = router;
