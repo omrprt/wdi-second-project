@@ -35,4 +35,13 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+userSchema.methods.hasCollected = function hasCollected(game) {
+  // .some method returns true if one item in the array passes the test
+  // we loop over the user's collectionLog array (array of ids)
+  // we check to see if any of those ids matches the id of the game that we have passed in
+  return this.collectionLog.some((log) => {
+    return log.equals(game._id);
+  });
+};
+
 module.exports = mongoose.model('User', userSchema);

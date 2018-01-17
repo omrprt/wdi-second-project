@@ -1,16 +1,20 @@
 const User = require('../models/user');
 
 function homePageRoute(req, res, next) {
-  User
-    .find()
-    .populate('collectionLog wishList playLog')
-    .exec()
-    .then((user) => {
-      console.log(req.user);
-      if(!user) return res.notFound();
-      return res.render('statics/index', { user });
-    })
-    .catch(next);
+  if(req.user) {
+    User
+      .findById(req.user.id)
+      .populate('collectionLog wishList playLog')
+      .exec()
+      .then((user) => {
+        console.log(req.user);
+        if(!user) return res.notFound();
+        return res.render('statics/index', { user });
+      })
+      .catch(next);
+  } else {
+    return res.render('statics/index');
+  }
 }
 
 function indexRoute(req, res, next) {
@@ -28,7 +32,20 @@ function indexRoute(req, res, next) {
 function myProfileRoute(req, res, next) {
   User
     .findById(req.user.id)
-    .populate('collectionLog wishList playLog')
+    .populate([{
+      path: 'collectionLog',
+      model: 'Game'
+    },{
+      path: 'wishList',
+      model: 'Game'
+    },{
+      path: 'playLog',
+      model: 'Log',
+      populate: {
+        path: 'game',
+        model: 'Game'
+      }
+    }])
     .exec()
     .then((user) => {
       if(!user) return res.notFound();

@@ -32,9 +32,8 @@
 </div>
 <div class="row">
   <ul>
-      <%= user.playLog %>
-      <% user.playLog.forEach((game) => { %>
-      <li><%= game.title %></li>
+      <% user.playLog.forEach((log) => { %>
+      <li><%= log.game.title %></li>
       <% }); %>
       </ul>
 </div>

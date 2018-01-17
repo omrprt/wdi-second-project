@@ -17,11 +17,16 @@
       </p>
 
       <% if(locals.isLoggedIn) { %>
-        <div class="row loggedInNav">
-        <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
-        <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-        <button class="btn btn-primary">Add to my collection</button>
-        </form>
+
+        <% if(!user.hasCollected(game)) { %>
+          <div class="row loggedInNav">
+          <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
+          <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+          <button class="btn btn-primary">Add to my collection</button>
+          </form>
+        <% } else { %>
+          <button>Delete</button>
+        <% } %>
 
         <form method="POST" action="/users/<%= locals.user.id %>/wishList">
         <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
@@ -50,11 +55,11 @@
           <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
             <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
             <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-primary">Delete</button>
+            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
             </form>
             <% } %>
             </div>
-  <div class="dropdown-divider"></div>
+              <div class="dropdown-divider"></div>
             <% }) %>
 
             <% if(locals.isLoggedIn) { %>
