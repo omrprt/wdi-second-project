@@ -117,12 +117,35 @@ function addGameToWishListRoute(req, res, next) {
     });
 }
 
+function deleteFromWishListRoute(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      const newWishList = user.wishList.reduce((accumulator, current) => {
+        if(current.toString() !== req.params.gameId.toString()) {
+          accumulator.push(current);
+        }
+        return accumulator;
+      }, []);
+
+      user.wishList = newWishList;
+      return user.save();
+    })
+    .then(() => {
+      res.redirect('back');
+    })
+    .catch(next);
+}
+
 
 module.exports = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
-  addGameToWishList: addGameToWishListRoute,
   deleteFromCollection: deleteFromCollectionLogRoute,
+  addGameToWishList: addGameToWishListRoute,
+  deleteFromWishList: deleteFromWishListRoute,
   myProfile: myProfileRoute,
   homePage: homePageRoute
 };

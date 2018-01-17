@@ -24,19 +24,21 @@
           <button class="btn btn-blue">Add to my collection</button>
           </form>
         <% } else { %>
-          <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %> ">
+          <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %>">
           <input type="hidden" name="_method" value="PUT">
           <button class="btn btn-blue">Remove from my collection</button>
           </form>
         <% } %>
 
-        <% if(!user.hasCollected(game)) { %>
+        <% if(!user.hasWished(game)) { %>
           <form method="POST" action="/users/<%= locals.user.id %>/wishList">
           <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
           <button class="btn btn-blue">Add to my wish list</button>
           </form>
           </form>
         <% } else { %>
+          <form method="POST" action="/users/<%= locals.user.id %>/wishList/<%= game.id %>">
+          <input type="hidden" name="_method" value="PUT">
           <button class="btn btn-blue">Remove from my wish list</button>
           </form>
         <% } %>

@@ -22,6 +22,9 @@ router.route('/users/:id/collectionlog/:gameId')
 router.route('/users/:id/wishList')
   .post(secureRoute, users.addGameToWishList);
 
+router.route('/users/:id/wishList/:gameId')
+  .put(secureRoute, users.deleteFromWishList);
+
 router.route('/logs/:id')
   .get(playLog.new)
   .post(secureRoute, playLog.add);

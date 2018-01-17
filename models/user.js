@@ -44,4 +44,13 @@ userSchema.methods.hasCollected = function hasCollected(game) {
   });
 };
 
+userSchema.methods.hasWished = function hasWished(game) {
+  // .some method returns true if one item in the array passes the test
+  // we loop over the user's collectionLog array (array of ids)
+  // we check to see if any of those ids matches the id of the game that we have passed in
+  return this.wishList.some((wish) => {
+    return wish.equals(game._id);
+  });
+};
+
 module.exports = mongoose.model('User', userSchema);
