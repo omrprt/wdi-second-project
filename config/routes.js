@@ -15,7 +15,6 @@ router.route('/users')
 router.route('/users/:id/collectionlog')
   .post(secureRoute, users.addGameToCollection);
 
-
 router.route('/users/:id/collectionlog/:gameId')
   .put(secureRoute, users.deleteFromCollection);
 

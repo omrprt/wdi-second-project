@@ -1,17 +1,9 @@
 <div class="row">
-  <h2>My Profile</h2>
-</div>
-<div class="row">
-  <div class="col-lg-9">
-  <p> Name:  <%= user.firstName %> <%= user.lastName %></p>
-  <p> UserName: <%= user.username %> </p>
-  <p> Email: <%= user.email %> </p>
-  </div>
-  <div class="col-lg-3 sideCard">
+  <div class="col-lg-3">
     <div class="row">
       <h6 class="card-header">MY GAME COLLECTION</h6>
-  </div>
-  <div class="card-body row">
+    </div>
+    <div class="card-body row">
     <ul>
         <% user.collectionLog.forEach((game) => { %>
           <li><a href="/games/<%= game.id %>"><%= game.title %><a></li>
@@ -29,11 +21,19 @@
           </ul>
       </div>
   </div>
+  <div class="col-lg-9">
+    <div class="row">
+<h2>My Profile</h2>
 </div>
+<p> Name:  <%= user.firstName %> <%= user.lastName %></p>
+<p> UserName: <%= user.username %> </p>
+<p> Email: <%= user.email %> </p>
 <div class="row">
   <ul>
       <% user.playLog.forEach((log) => { %>
       <li><%= log.game.title %></li>
       <% }); %>
       </ul>
+</div>
+  </div>
 </div>
