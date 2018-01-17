@@ -8,7 +8,6 @@ function sessionsCreate(req, res, next) {
   User
     .findOne({ email: req.body.email })
     .then((user) => {
-      console.log(user);
       if(!user || !user.validatePassword(req.body.password)) {
         req.flash('danger', 'Unknown email/password combination');
         return res.redirect('/');

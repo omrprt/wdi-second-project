@@ -17,23 +17,31 @@
       </p>
 
       <% if(locals.isLoggedIn) { %>
-
+        <div class="row loggedInNav">
         <% if(!user.hasCollected(game)) { %>
-          <div class="row loggedInNav">
           <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
           <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-          <button class="btn btn-primary">Add to my collection</button>
+          <button class="btn btn-blue">Add to my collection</button>
           </form>
         <% } else { %>
-          <button>Delete</button>
+          <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %> ">
+          <input type="hidden" name="_method" value="PUT">
+          <button class="btn btn-blue">Remove from my collection</button>
+          </form>
         <% } %>
 
-        <form method="POST" action="/users/<%= locals.user.id %>/wishList">
-        <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-        <button class="btn btn-primary">Add to my wish list</button>
-        </form>
+        <% if(!user.hasCollected(game)) { %>
+          <form method="POST" action="/users/<%= locals.user.id %>/wishList">
+          <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+          <button class="btn btn-blue">Add to my wish list</button>
+          </form>
+          </form>
+        <% } else { %>
+          <button class="btn btn-blue">Remove from my wish list</button>
+          </form>
+        <% } %>
 
-        <a href="/logs/<%= game.id %>"><button class="btn btn-primary">Log New Game</button></a>
+        <a href="/logs/<%= game.id %>"><button class="btn btn-blue">Log New Game</button></a>
 
         </form>
         </div>
@@ -66,7 +74,7 @@
               <section>
               <form method="POST" action="/games/<%= game.id %>/comments">
               <textarea class="form-control leaveComment" name="content" id="content" placeholder="Comment"></textarea>
-              <button class="btn btn-primary">Leave a comment</button>
+              <button class="btn btn-blue">Leave a comment</button>
               </form>
               </section>
               <% } %>

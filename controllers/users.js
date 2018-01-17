@@ -75,6 +75,28 @@ function addGameToCollectionRoute(req, res, next) {
     });
 }
 
+function deleteFromCollectionLogRoute(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      const newCollectionLog = user.collectionLog.reduce((accumulator, current) => {
+        if(current.toString() !== req.params.gameId.toString()) {
+          accumulator.push(current);
+        }
+        return accumulator;
+      }, []);
+
+      user.collectionLog = newCollectionLog;
+      return user.save();
+    })
+    .then(() => {
+      res.redirect('back');
+    })
+    .catch(next);
+}
+
 function addGameToWishListRoute(req, res, next) {
   User
     .findById(req.params.id)
@@ -95,29 +117,12 @@ function addGameToWishListRoute(req, res, next) {
     });
 }
 
-function deleteCollectionLogRoute(req, res, next) {
-  User
-    .findById(req.params.id)
-    .exec()
-    .then((user) => {
-      if(!user) return res.notFound();
-
-      const collectionLog = user.collectionLogs.id(req.params.collectionLogId);
-      collectionLog.remove();
-
-      return user.save();
-    })
-    .then((user) => {
-      res.redirect(`/users/${user.id}`);
-    })
-    .catch(next);
-}
 
 module.exports = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
   addGameToWishList: addGameToWishListRoute,
-  deleteCollection: deleteCollectionLogRoute,
+  deleteFromCollection: deleteFromCollectionLogRoute,
   myProfile: myProfileRoute,
   homePage: homePageRoute
 };

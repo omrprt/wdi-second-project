@@ -14,7 +14,6 @@ function indexRoute(req, res) {
 function addToPlayLogRoute(req, res, next) {
   req.body.createdBy = req.user;
   req.body.game = req.params.id;
-  console.log('in add log', req.body);
 
   Log
     .create(req.body)
