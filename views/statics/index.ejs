@@ -7,7 +7,7 @@
         <h6 class="card-title">Collection: </h6>
           <ul>
             <% user.collectionLog.forEach((game) => { %>
-              <li><%= game.title %></li>
+              <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
               <% }); %>
           </ul>
       </div>
@@ -16,7 +16,7 @@
         <h6 class="card-title">Wish List: </h6>
           <ul>
           <% user.wishList.forEach((game) => { %>
-          <li><a href="/games/<%= game.id %>"><%= game.title %><a></li>
+          <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
           <% }); %>
           </ul>
       </div>
@@ -41,17 +41,6 @@
     <h2>Welcome</h2>
   </div>
     <p>Meeple Gamer is a web development project coded by Omar Portillo at GA for the web development immersive course, cohort 31.<p>
-      <p>The theme of this website is boardgames.  You should be able to save a list of boardgames you own, want, and play log</p>
-  </div>
-</div>
-
-
-
-<div class="row">
-  <div class="col-lg-3">
-
-  </div>
-  <div class="col-lg-9">
-
+      <p>The theme of this website is board games.  You should be able to save a list of boardgames you own, want, and play log</p>
   </div>
 </div>

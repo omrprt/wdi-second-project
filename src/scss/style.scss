@@ -7,6 +7,7 @@ body {
 
 ul {
   list-style-type: none;
+  padding-left: 20px;
 }
 
 .row {
@@ -66,17 +67,17 @@ ul {
   max-height: 280px;
 }
 
-.loggedInNav{
+.loggedInNav {
   display: flex;
   justify-content: space-around;
 }
 
-.commentContent{
+.commentContent {
   background-color: lightsteelblue;
   border-radius: 3px;
 }
 
-.leaveComment{
+.leaveComment {
   margin-top: 10px;
 }
 
@@ -87,7 +88,7 @@ ul {
   margin: 10px auto;
 }
 
-.card-header{
+.card-header {
   background-color: lightsteelblue;
   height: 30px;
   width: 100%;
@@ -95,16 +96,25 @@ ul {
   align-items: center;
 }
 
-.flexCard{
+.flexCard {
   display: flex;
   flex-wrap: wrap;
 }
 
-.btn-blue{
+.btn-blue {
   background-color: #337AB7;
   color: white;
 }
 
-.sideCard{
+.sideCard {
   position: fixed;
+}
+
+a:hover {
+  color: darkorange;
+  text-decoration: none;
+}
+
+.commentBy{
+  color: white;
 }

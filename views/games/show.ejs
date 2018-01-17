@@ -1,84 +1,75 @@
-<div class="container">
-  <br>
-  <div class="row">
-    <div class="col col-lg-4"><img class="img-fluid gameImage" src="<%= game.image %>" alt="<%= game.title %>">
+<div class="row">
+  <div class="col col-lg-4"><img class="img-fluid gameImage" src="<%= game.image %>" alt="<%= game.title %>">
+  </div>
+  <div class="col col-lg-8">
+    <div class="row">
+      <h2><%= game.title %></h2>
     </div>
-    <div class="col col-lg-8">
-      <div class="row">
-        <div class= "col-lg-9">
-          <h2>
-            <h2><%= game.title %></h2>
-          </h2>
-        </div>
-
-      </div>
-      <p class="font-italic">From the publisher:</p>
-      <p><%= game.description %>
-      </p>
-
-      <% if(locals.isLoggedIn) { %>
-        <div class="row loggedInNav">
-        <% if(!user.hasCollected(game)) { %>
-          <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
-          <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-          <button class="btn btn-blue">Add to my collection</button>
-          </form>
-        <% } else { %>
-          <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %>">
-          <input type="hidden" name="_method" value="PUT">
-          <button class="btn btn-blue">Remove from my collection</button>
-          </form>
+    <p class="font-italic">From the publisher:</p>
+    <p><%= game.description %></p>
+    <% if(locals.isLoggedIn) { %>
+    <div class="row loggedInNav">
+    <% if(!user.hasCollected(game)) { %>
+      <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
+      <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+      <button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Collection</button>
+      </form>
+      <% } else { %>
+        <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %>">
+        <input type="hidden" name="_method" value="PUT">
+        <button class="btn btn-blue"><i class="fa fa-minus" aria-hidden="true"></i> Collection</button>
+        </form>
         <% } %>
 
         <% if(!user.hasWished(game)) { %>
           <form method="POST" action="/users/<%= locals.user.id %>/wishList">
           <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-          <button class="btn btn-blue">Add to my wish list</button>
+          <button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Wish List</button>
           </form>
           </form>
-        <% } else { %>
-          <form method="POST" action="/users/<%= locals.user.id %>/wishList/<%= game.id %>">
-          <input type="hidden" name="_method" value="PUT">
-          <button class="btn btn-blue">Remove from my wish list</button>
-          </form>
-        <% } %>
-
-        <a href="/logs/<%= game.id %>"><button class="btn btn-blue">Log New Game</button></a>
-
-        </form>
-        </div>
-        <% } %>
-
-      </div>
-    </div>
-  <div class="dropdown-divider"></div>
-</div>
-  <div class="container">
-    <div class="row">
-      <div class="col col-lg-4">
-        <h4>Comments</h4>
-      </div>
-      <div class="col col-lg-8">
-        <% game.comments.forEach((comment) => { %>
-          <div class="commentContent">
-          <p><small><%= comment.createdBy.username %> commented: </small><%= comment.content %></p>
-          <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-            <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+          <% } else { %>
+            <form method="POST" action="/users/<%= locals.user.id %>/wishList/<%= game.id %>">
+            <input type="hidden" name="_method" value="PUT">
+            <button class="btn btn-blue"><i class="fa fa-minus" aria-hidden="true"></i> Wish List</button>
             </form>
             <% } %>
-            </div>
-              <div class="dropdown-divider"></div>
-            <% }) %>
 
-            <% if(locals.isLoggedIn) { %>
-              <section>
-              <form method="POST" action="/games/<%= game.id %>/comments">
-              <textarea class="form-control leaveComment" name="content" id="content" placeholder="Comment"></textarea>
-              <button class="btn btn-blue">Leave a comment</button>
-              </form>
-              </section>
-              <% } %>
+            <a href="/logs/<%= game.id %>"><button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Play Log</button></a>
+
+            </form>
             </div>
+            <% } %>
+
           </div>
+        </div>
+        <div class="underline"></div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col col-lg-4">
+            <h4>Comments</h4>
+          </div>
+          <div class="col col-lg-8">
+            <% game.comments.forEach((comment) => { %>
+              <div class="commentContent">
+              <p><span class="commentBy"><%= comment.createdBy.username %>: </span><%= comment.content %></p>
+              <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+                <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                </form>
+                <% } %>
+                </div>
+                <div class="dropdown-divider"></div>
+                <% }) %>
+
+                <% if(locals.isLoggedIn) { %>
+                  <section>
+                  <form method="POST" action="/games/<%= game.id %>/comments">
+                  <textarea class="form-control leaveComment" name="content" id="content" placeholder="Comment"></textarea>
+                  <button class="btn btn-blue">Leave a comment</button>
+                  </form>
+                  </section>
+                  <% } %>
+                </div>
+              </div>
