@@ -93,5 +93,9 @@ ul {
   width: 100%;
   display: flex;
   align-items: center;
+}
 
+.flexCard{
+  display: flex;
+  flex-wrap: wrap;
 }

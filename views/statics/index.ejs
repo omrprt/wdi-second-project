@@ -19,10 +19,9 @@
           <% }); %>
             </ul>
         </div>
-        <div class="dropdown-divider"></div>
+        <div class="underline"></div>
         <div class="card-body row">
             <h6 class="card-title">Wish List: </h6>
-          </div>
           <ul>
             <% user.wishList.forEach((game) => { %>
               <li><%= game.title %></li>
@@ -45,8 +44,4 @@
       <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
   <% } %>
-
-
-
-
   </div>

@@ -1,5 +1,8 @@
+<div class="row">
 <h2>Community Gamers</h2>
-<% users.forEach((user) => { %>
+</div>
+<div class="container flexCard">
+  <% users.forEach((user) => { %>
   <div class="col-lg-4">
     <div class="card">
       <h5 class="card-header"><strong>Player:</strong> <%= user.username %></h5>
@@ -11,7 +14,7 @@
           <% }); %>
           </ul>
       </div>
-      <div class="dropdown-divider"></div>
+    <div class="underline"></div>
       <div class="card-body row">
           <h6 class="card-title">Wish List: </h6>
         <ul>
@@ -22,5 +25,5 @@
         </div>
       </div>
     </div>
-  </div>
-<% }) %>
+    <% }) %>
+</div>

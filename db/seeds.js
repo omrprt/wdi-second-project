@@ -12,11 +12,29 @@ User.collection.drop();
 
 User
   .create([{
-    firstName: 'gamer',
-    lastName: 'gamer',
+    firstName: 'Gamer',
+    lastName: 'Meeple',
     username: 'gamer',
     email: 'gamer@meeplegamer.com',
     password: 'gamer'
+  }, {
+    firstName: 'Omar',
+    lastName: 'Port',
+    username: 'Omar',
+    email: 'omar@meeplegamer.com',
+    password: 'omar'
+  }, {
+    firstName: 'Brian',
+    lastName: 'Port',
+    username: 'Brian',
+    email: 'brian@meeplegamer.com',
+    password: 'brian'
+  },{
+    firstName: 'Robert',
+    lastName: 'Port',
+    username: 'Robert',
+    email: 'robert@meeplegamer.com',
+    password: 'robert'
   }])
   .then((users) => {
     console.log(`${users.length} users created`);
