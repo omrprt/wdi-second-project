@@ -13,30 +13,30 @@ router.route('/users')
   .get(users.index);
 
 router.route('/users/:id/collectionlog')
-  .post(users.addGameToCollection);
+  .post(secureRoute, users.addGameToCollection);
 
 router.route('/users/:id/wishList')
-  .post(users.addGameToWishList);
+  .post(secureRoute, users.addGameToWishList);
 
 router.route('/logs/:id')
   .get(playLog.new)
-  .post(playLog.add);
+  .post(secureRoute, playLog.add);
 
 router.route('/myprofile')
-  .get(users.myProfile);
+  .get(secureRoute, users.myProfile);
 
 router.route('/games')
   .get(games.index)
-  .post(games.create);
+  .post(secureRoute, games.create);
 
 router.route('/games/:id')
   .get(games.show);
 
 router.route('/games/:id/comments')
-  .post(games.createComment);
+  .post(secureRoute, games.createComment);
 
 router.route('/games/:id/comments/:commentId')
-  .delete(games.deleteComment);
+  .delete(secureRoute, games.deleteComment);
 
 router.route('/register')
   .get(registrations.new)

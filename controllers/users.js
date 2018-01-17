@@ -91,7 +91,7 @@ function deleteCollectionLogRoute(req, res, next) {
       return user.save();
     })
     .then((user) => {
-      res.redirect('back');
+      res.redirect(`/users/${user.id}`);
     })
     .catch(next);
 }
