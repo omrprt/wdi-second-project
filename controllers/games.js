@@ -1,8 +1,8 @@
-const Game = require('../models/game');
+const Game           = require('../models/game');
 
 function indexRoute(req, res, next) {
   if(req.query.title) {
-    req.query = { title: new RegExp(req.query.title, 'i')};
+    req.query        = { title: new RegExp(req.query.title, 'i')};
   }
 
   Game
@@ -60,7 +60,7 @@ function updateRoute(req, res, next) {
     .then((game) => {
       if(!game) return res.notFound();
 
-      game = Object.assign(game, req.body);
+      game           = Object.assign(game, req.body);
 
       return game.save();
     })
@@ -115,7 +115,7 @@ function deleteCommentRoute(req, res, next) {
     .then((game) => {
       if(!game) return res.notFound();
 
-      const comment = game.comments.id(req.params.commentId);
+      const comment  = game.comments.id(req.params.commentId);
       comment.remove();
 
       return game.save();
@@ -126,7 +126,7 @@ function deleteCommentRoute(req, res, next) {
     .catch(next);
 }
 
-module.exports = {
+module.exports       = {
   index: indexRoute,
   new: newRoute,
   create: createRoute,

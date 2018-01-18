@@ -5,8 +5,12 @@
       <div class="card-body row">
         <ul>
           <% games.forEach((game) => { %>
-            <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
-          <% }); %>
+            <li>
+              <a href="/games/<%= game.id %>">
+                <%= game.title %>
+              </a>
+            </li>
+            <% }); %>
         </ul>
       </div>
     </div>
@@ -18,17 +22,19 @@
     <% games.forEach((game) => { %>
       <div class="container">
         <div class="row">
-          <div class="col col-lg-4"><img class="img-fluid gameImage" src="<%= game.image %>" alt="<%= game.title %>">
+          <div class="col col-lg-4"><a href="/games/<%= game.id %>"><img class="img-fluid gameImage" src="<%= game.image %>" alt="<%= game.title %>"></a>
           </div>
-            <div class="col col-lg-8">
-              <div class="row">
-                  <h3><a href="/games/<%= game.id %>"><%= game.title %></a></h3>
-              </div>
-              <p><%= game.description %></p>
+          <div class="col col-lg-8">
+            <div class="row">
+              <h3><a href="/games/<%= game.id %>"><%= game.title %></a></h3>
             </div>
+            <p>
+              <%= game.description %>
+            </p>
+          </div>
         </div>
       </div>
       <div class="underline"></div>
-    <% }) %>
+      <% }) %>
   </div>
 </div>

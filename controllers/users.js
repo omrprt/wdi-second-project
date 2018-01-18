@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User                   = require('../models/user');
 
 function homePageRoute(req, res, next) {
   if(req.user) {
@@ -87,7 +87,7 @@ function deleteFromCollectionLogRoute(req, res, next) {
         }
         return accumulator;
       }, []);
-      user.collectionLog = newCollectionLog;
+      user.collectionLog     = newCollectionLog;
       return user.save();
     })
     .then(() => {
@@ -122,14 +122,14 @@ function deleteFromWishListRoute(req, res, next) {
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      const newWishList = user.wishList.reduce((accumulator, current) => {
+      const newWishList      = user.wishList.reduce((accumulator, current) => {
         if(current.toString() !== req.params.gameId.toString()) {
           accumulator.push(current);
         }
         return accumulator;
       }, []);
 
-      user.wishList = newWishList;
+      user.wishList          = newWishList;
       return user.save();
     })
     .then(() => {
@@ -139,7 +139,7 @@ function deleteFromWishListRoute(req, res, next) {
 }
 
 
-module.exports = {
+module.exports               = {
   index: indexRoute,
   addGameToCollection: addGameToCollectionRoute,
   deleteFromCollection: deleteFromCollectionLogRoute,

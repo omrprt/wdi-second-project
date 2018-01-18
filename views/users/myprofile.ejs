@@ -49,18 +49,16 @@
     </div>
     <div class="container flexCard">
       <% user.playLog.forEach((log) => { %>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
           <div class="card">
             <p class="card-header"><strong><%= log.game.title %></strong> </p>
             <div class="card-body row">
-              <h6 class="card-title">filler</h6>
               <ul>
-                <li>
-                  <%= log.datePlayed %>
-                </li>
-                <li>
-                  <%= log.result %>
-                </li>
+              <li>Played On: <%= log.datePlayed %></li>
+              <li>Wining Condition: <%= log.winCondition %></li>
+              <li>Game Result:<%= log.result %></li>
+              <li>Game Notes: <%= log.gameNotes %></li>
+              <li>Picture it:<%= log.endGameImage %></li>
               </ul>
             </div>
           </div>

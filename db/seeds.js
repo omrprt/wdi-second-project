@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const { dbURI } = require('../config/environment');
+const mongoose   = require('mongoose');
+const { dbURI }  = require('../config/environment');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(dbURI);
 
-const Game = require('../models/game');
-const User = require('../models/user');
+const Game       = require('../models/game');
+const User       = require('../models/user');
 
 Game.collection.drop();
 User.collection.drop();

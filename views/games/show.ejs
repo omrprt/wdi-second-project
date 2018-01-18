@@ -5,70 +5,75 @@
     <div class="row">
       <h2><%= game.title %></h2>
     </div>
-    <p><%= game.description %></p>
+    <p>
+      <%= game.description %>
+    </p>
     <% if(locals.isLoggedIn) { %>
-    <div class="row loggedInNav">
-    <% if(!user.hasCollected(game)) { %>
-      <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
-      <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-      <button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Collection</button>
-      </form>
-      <% } else { %>
-        <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %>">
-        <input type="hidden" name="_method" value="PUT">
-        <button class="btn btn-blue"><i class="fa fa-minus" aria-hidden="true"></i> Collection</button>
-        </form>
-        <% } %>
-
-        <% if(!user.hasWished(game)) { %>
-          <form method="POST" action="/users/<%= locals.user.id %>/wishList">
-          <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
-          <button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Wish List</button>
-          </form>
+      <div class="row loggedInNav">
+        <% if(!user.hasCollected(game)) { %>
+          <form method="POST" action="/users/<%= locals.user.id %>/collectionLog">
+            <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+            <button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Collection</button>
           </form>
           <% } else { %>
-            <form method="POST" action="/users/<%= locals.user.id %>/wishList/<%= game.id %>">
-            <input type="hidden" name="_method" value="PUT">
-            <button class="btn btn-blue"><i class="fa fa-minus" aria-hidden="true"></i> Wish List</button>
+            <form method="POST" action="/users/<%= locals.user.id %>/collectionlog/<%= game.id %>">
+              <input type="hidden" name="_method" value="PUT">
+              <button class="btn btn-blue"><i class="fa fa-minus" aria-hidden="true"></i> Collection</button>
             </form>
             <% } %>
 
-            <a href="/logs/<%= game.id %>"><button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Play Log</button></a>
-
-            </form>
-            </div>
-            <% } %>
-
-          </div>
-        </div>
-        <div class="underline"></div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col col-lg-4">
-            <h4>Comments</h4>
-          </div>
-          <div class="col col-lg-8">
-            <% game.comments.forEach((comment) => { %>
-              <div class="commentContent">
-              <p><span class="commentBy"><%= comment.createdBy.username %>: </span><%= comment.content %></p>
-              <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-                <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+              <% if(!user.hasWished(game)) { %>
+                <form method="POST" action="/users/<%= locals.user.id %>/wishList">
+                  <input type="hidden" value="<%= game.id %>" name="id" id="gameID">
+                  <button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Wish List</button>
                 </form>
-                <% } %>
-                </div>
-                <div class="dropdown-divider"></div>
-                <% }) %>
-
-                <% if(locals.isLoggedIn) { %>
-                  <section>
-                  <form method="POST" action="/games/<%= game.id %>/comments">
-                  <textarea class="form-control leaveComment" name="content" id="content" placeholder="Comment"></textarea>
-                  <button class="btn btn-blue">Leave a comment</button>
+                </form>
+                <% } else { %>
+                  <form method="POST" action="/users/<%= locals.user.id %>/wishList/<%= game.id %>">
+                    <input type="hidden" name="_method" value="PUT">
+                    <button class="btn btn-blue"><i class="fa fa-minus" aria-hidden="true"></i> Wish List</button>
                   </form>
-                  </section>
                   <% } %>
-                </div>
-              </div>
+
+                    <a href="/logs/<%= game.id %>"><button class="btn btn-blue"><i class="fa fa-plus" aria-hidden="true"></i> Play Log</button></a>
+
+                    </form>
+      </div>
+      <% } %>
+
+  </div>
+</div>
+<div class="underline"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-4">
+      <h4>Comments</h4>
+    </div>
+    <div class="col col-lg-8">
+      <% game.comments.forEach((comment) => { %>
+        <div class="commentContent">
+          <p><span class="commentBy"><%= comment.createdBy.username %>: </span>
+            <%= comment.content %>
+          </p>
+          <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+            <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+            </form>
+            <% } %>
+        </div>
+        <div class="dropdown-divider"></div>
+        <% }) %>
+
+          <% if(locals.isLoggedIn) { %>
+            <section>
+              <form method="POST" action="/games/<%= game.id %>/comments">
+                <textarea class="form-control leaveComment" name="content" id="content" placeholder="Comment"></textarea>
+                <button class="btn btn-blue">Leave a comment</button>
+              </form>
+            </section>
+            <% } %>
+    </div>
+  </div>
+</div>

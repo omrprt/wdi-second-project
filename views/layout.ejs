@@ -40,7 +40,7 @@
         <% } %>
         </ul>
         <% if(locals.isLoggedIn) { %>
-          <li class="nav-item nav-link"><h4><%= locals.user.username %></h4></li>
+          <li class="nav-item nav-link userName"><%= locals.user.username %></li>
 
         <% } %>
         <form class="form-inline my-2 my-lg-0" action="/games" method="GET">
@@ -53,7 +53,7 @@
         </header>
         <main class="container">
           <% for (const type in messages) { %>
-    <p class="alert alert-<%= type %>"><%= messages [type] %></p>
+    <p class="alert <%= type %>"><%= messages [type] %></p>
     <% } %>
 
               <%- body %>

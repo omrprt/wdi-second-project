@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const sessions = require('../controllers/sessions');
+const router        = require('express').Router();
+const sessions      = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
-const games = require('../controllers/games');
-const users = require('../controllers/users');
-const playLog = require('../controllers/playLog');
-const secureRoute = require('../lib/secureRoute');
+const games         = require('../controllers/games');
+const users         = require('../controllers/users');
+const playLog       = require('../controllers/playLog');
+const secureRoute   = require('../lib/secureRoute');
 
 router.route('/')
   .get(users.homePage);
@@ -57,4 +57,4 @@ router.route('/logout')
 
 router.all('*', (req, res) => res.notFound());
 
-module.exports = router;
+module.exports      = router;
