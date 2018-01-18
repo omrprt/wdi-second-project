@@ -1,52 +1,71 @@
 <div class="row">
   <div class="col-lg-3">
-    <div class="row">
-      <h6 class="card-header">MY COLLECTION</h6>
-    </div>
-    <div class="card-body row">
-      <ul>
-        <% user.collectionLog.forEach((game) => { %>
-          <li><a href="/games/<%= game.id %>"><%= game.title %><a></li>
-          <% }); %>
+    <div class="card">
+      <h5 class="card-header"><strong>My Lists</strong></h5>
+      <div class="card-body row">
+        <h6 class="card-title">Collection: </h6>
+        <ul>
+          <% user.collectionLog.forEach((game) => { %>
+            <li>
+              <a href="/games/<%= game.id %>">
+                <%= game.title %>
+              </a>
+            </li>
+            <% }); %>
         </ul>
       </div>
-      <div class="row">
-        <h6 class="card-header">MY WISH LIST</h6>
-      </div>
+      <div class="underline"></div>
       <div class="card-body row">
+        <h6 class="card-title">Wish List: </h6>
         <ul>
           <% user.wishList.forEach((game) => { %>
-            <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
+            <li>
+              <a href="/games/<%= game.id %>">
+                <%= game.title %>
+              </a>
+            </li>
             <% }); %>
-          </ul>
-        </div>
+        </ul>
       </div>
+    </div>
+  </div>
 
 
-      <div class="col-lg-9">
-        <div class="row">
-          <h2>My Profile</h2>
-        </div>
-        <div class="row">
-          <p> Name:  <%= user.firstName %> <%= user.lastName %></p>
-          <p> UserName: <%= user.username %> </p>
-          <p> Email: <%= user.email %> </p>
-        </div><source src="https://" type="video/">
-        <div class="container flexCard">
-          <% user.playLog.forEach((log) => { %>
-            <div class="col-lg-4">
-            <div class="card">
-            <h5 class="card-header"><strong><%= log.game.title %></strong> </h5>
+  <div class="col-lg-9">
+    <div class="row">
+      <h2>My Profile</h2>
+    </div>
+    <div class="row">
+      <p> Name:
+        <%= user.firstName %>
+          <%= user.lastName %>
+      </p>
+      <p> UserName:
+        <%= user.username %>
+      </p>
+      <p> Email:
+        <%= user.email %>
+      </p>
+    </div>
+    <div class="container flexCard">
+      <% user.playLog.forEach((log) => { %>
+        <div class="col-lg-4">
+          <div class="card">
+            <p class="card-header"><strong><%= log.game.title %></strong> </p>
             <div class="card-body row">
-            <h6 class="card-title">filler</h6>
-            <ul>
-            <li>  <%= log.datePlayed %></li>
-            <li>  <%= log.result %></li>
-            </ul>
+              <h6 class="card-title">filler</h6>
+              <ul>
+                <li>
+                  <%= log.datePlayed %>
+                </li>
+                <li>
+                  <%= log.result %>
+                </li>
+              </ul>
             </div>
-            </div>
-            </div>
-            <% }) %>
           </div>
         </div>
-      </div>
+        <% }) %>
+    </div>
+  </div>
+</div>
