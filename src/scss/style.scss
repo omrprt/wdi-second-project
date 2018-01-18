@@ -84,8 +84,8 @@ ul {
 .underline {
   height: 1px;
   width: 75%;
-  background-color: lightsteelblue;
-  margin: 10px auto;
+  background-color: darkorange;
+  margin: 15px auto;
 }
 
 .card-header {
@@ -101,9 +101,16 @@ ul {
   flex-wrap: wrap;
 }
 
+.card {
+  margin-bottom: 20px;
+}
+
 .btn-blue {
   background-color: #337AB7;
   color: white;
+  &:hover{
+    background-color: #6292bc;
+  }
 }
 
 .sideCard {
@@ -117,4 +124,11 @@ a:hover {
 
 .commentBy{
   color: white;
+}
+
+footer {
+  background-color: lightsteelblue;
+  text-align: center;
+  font-weight: 400;
+  height: 25;
 }

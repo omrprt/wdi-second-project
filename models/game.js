@@ -16,7 +16,6 @@ const gameSchema = new mongoose.Schema({
   image: String,
   description: String,
   playingTime: String,
-  setUpTime: String,
   players: String,
   genre: String,
   designer: String,
