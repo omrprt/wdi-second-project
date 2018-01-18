@@ -1,8 +1,12 @@
 const Game = require('../models/game');
 
 function indexRoute(req, res, next) {
+  if(req.query.title) {
+    req.query = { title: new RegExp(req.query.title, 'i')};
+  }
+
   Game
-    .find()
+    .find(req.query)
     .exec()
     .then((games) => res.render('games/index', { games }))
     .catch(next);
