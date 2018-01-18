@@ -4,36 +4,49 @@
       <h6 class="card-header">MY COLLECTION</h6>
     </div>
     <div class="card-body row">
-    <ul>
+      <ul>
         <% user.collectionLog.forEach((game) => { %>
           <li><a href="/games/<%= game.id %>"><%= game.title %><a></li>
-        <% }); %>
-    </ul>
-    </div>
-    <div class="row">
-      <h6 class="card-header">MY WISH LIST</h6>
-    </div>
-    <div class="card-body row">
-      <ul>
-          <% user.wishList.forEach((game) => { %>
-            <li><a href="/games/<%= game.id %>"><%= game.title %><a></li>
           <% }); %>
-          </ul>
+        </ul>
       </div>
-  </div>
-  <div class="col-lg-9">
-    <div class="row">
-<h2>My Profile</h2>
-</div>
-<p> Name:  <%= user.firstName %> <%= user.lastName %></p>
-<p> UserName: <%= user.username %> </p>
-<p> Email: <%= user.email %> </p>
-<div class="row">
-  <ul>
-      <% user.playLog.forEach((log) => { %>
-      <li><%= log.game.title %></li>
-      <% }); %>
-      </ul>
-</div>
-  </div>
-</div>
+      <div class="row">
+        <h6 class="card-header">MY WISH LIST</h6>
+      </div>
+      <div class="card-body row">
+        <ul>
+          <% user.wishList.forEach((game) => { %>
+            <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="col-lg-9">
+        <div class="row">
+          <h2>My Profile</h2>
+        </div>
+        <div class="row">
+          <p> Name:  <%= user.firstName %> <%= user.lastName %></p>
+          <p> UserName: <%= user.username %> </p>
+          <p> Email: <%= user.email %> </p>
+        </div><source src="https://" type="video/">
+        <div class="container flexCard">
+          <% user.playLog.forEach((log) => { %>
+            <div class="col-lg-4">
+            <div class="card">
+            <h5 class="card-header"><strong><%= log.game.title %></strong> </h5>
+            <div class="card-body row">
+            <h6 class="card-title">filler</h6>
+            <ul>
+            <li>  <%= log.datePlayed %></li>
+            <li>  <%= log.result %></li>
+            </ul>
+            </div>
+            </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>

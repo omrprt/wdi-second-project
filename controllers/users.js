@@ -87,7 +87,6 @@ function deleteFromCollectionLogRoute(req, res, next) {
         }
         return accumulator;
       }, []);
-
       user.collectionLog = newCollectionLog;
       return user.save();
     })

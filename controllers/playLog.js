@@ -18,35 +18,57 @@ function addToPlayLogRoute(req, res, next) {
   Log
     .create(req.body)
     .then(log => {
-
       User
         .findById(log.createdBy._id)
         .exec()
-        .then((user) => {
+        .then(user => {
           user.playLog.push(log._id);
           return user.save();
         })
-        .catch((err) => {
-          if(err.name === 'ValidationError') {
-            return res.badRequest(`/users/${req.params.id}`, err.toString());
-          }
-          next(err);
-        });
-
-      Game
-        .findById(log.game._id)
-        .exec()
-        .then((game) => {
+        .then(() => {
+          return Game.findById(log.game).exec();
+        })
+        .then(game => {
+          // here
           game.logs.push(log._id);
           return game.save();
         })
-        .catch((err) => {
-          if(err.name === 'ValidationError') {
-            return res.badRequest(`/users/${req.params.id}`, err.toString());
-          }
-          next(err);
-        });
+        .then(game => {
+          return res.redirect(`/games/${game.id}`);
+        })
+        .catch(next);
     });
+
+
+
+
+
+      // User
+      //   .findById(log.createdBy._id)
+      //   .exec()
+      //   .then((user) => {
+      //     user.playLog.push(log._id);
+      //     return user.save();
+      //   })
+      //   .catch((err) => {
+      //     if(err.name === 'ValidationError') {
+      //       return res.badRequest(`/users/${req.params.id}`, err.toString());
+      //     }
+      //     next(err);
+      //   });
+      //
+      // Game
+      //   .findById(log.game._id)
+      //   .exec()
+      //   .then((game) => {
+      //     game.logs.push(log._id);
+      //     return game.save();
+      //   })
+      //   .then(game => {
+      //     return res.redirect(`/games/${game.id}`);
+      //   })
+      //   .catch(next);
+    // });
 }
 
 module.exports = {
