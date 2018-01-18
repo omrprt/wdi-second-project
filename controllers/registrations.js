@@ -7,7 +7,10 @@ function newRoute(req, res) {
 function createRoute(req, res, next) {
   User
     .create(req.body)
-    .then(() => res.redirect('/login'))
+    .then((user) => {
+      req.flash('successFlash', `${user.username}, thanks for registering!  Log In.`);
+      res.redirect('/login');
+    })
     .catch((err) => {
       if(err.name === 'ValidationError') {
         return res.badRequest('/register', err.toString());

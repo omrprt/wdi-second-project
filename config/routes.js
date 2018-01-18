@@ -26,7 +26,9 @@ router.route('/users/:id/wishList/:gameId')
 
 router.route('/logs/:id')
   .get(playLog.new)
-  .post(secureRoute, playLog.add);
+  .post(secureRoute, playLog.add)
+  .delete(secureRoute, playLog.delete);
+
 
 router.route('/myprofile')
   .get(secureRoute, users.myProfile);

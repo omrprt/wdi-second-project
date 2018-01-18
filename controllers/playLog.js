@@ -40,7 +40,24 @@ function addToPlayLogRoute(req, res, next) {
     });
 }
 
+function deletePlayLogRoute(req, res, next) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(user =>  {
+      if(!user) return res.notFound();
+      user.playLog.id(req.params.playLogId).remove();
+
+      return user.save();
+    })
+    .then(() => {
+      res.redirect('back');
+    })
+    .catch(next);
+}
+
 module.exports       = {
   new: indexRoute,
-  add: addToPlayLogRoute
+  add: addToPlayLogRoute,
+  delete: deletePlayLogRoute
 };

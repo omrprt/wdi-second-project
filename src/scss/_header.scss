@@ -1,0 +1,29 @@
+.navbar {
+  background: lightsteelblue;
+  background: -webkit-linear-gradient(to bottom, lightsteelblue, #FFF);
+  background: linear-gradient(to bottom, lightsteelblue, #FFF);
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: #337AB7;
+  &:hover {
+    color: darkorange;
+    text-decoration: none;
+  }
+}
+
+.loggedInNav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.userName {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: darkorange;
+  font-size: 30px;
+}
+
+.logo{
+  height: 70px;
+}

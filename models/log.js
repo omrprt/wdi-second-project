@@ -12,7 +12,7 @@ const logSchema = new mongoose.Schema({
   timestamps: true
 });
 
-logSchema.methods.belongsTo = function commentBelongsTo(user) {
+logSchema.methods.belongsTo = function logBelongsTo(user) {
   return this.createdBy.id === user.id;
 };
 

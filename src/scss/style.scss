@@ -1,28 +1,7 @@
 // import scss partials here
-
-body {
-  font-family: 'Helvetica', sans-serif;
-  margin: 111px auto 50px;
-}
-
-.navbar {
-  background: lightsteelblue;
-  background: -webkit-linear-gradient(to bottom, lightsteelblue, #FFF);
-  background: linear-gradient(to bottom, lightsteelblue, #FFF);
-}
-
-.navbar-dark .navbar-nav .nav-link{
-  color: #337AB7;
-  &:hover {
-    color: darkorange;
-    text-decoration: none;
-  }
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 20px;
-}
+@import "header";
+@import "footer";
+@import "bodyTags";
 
 .row {
   margin-left: 0;
@@ -33,57 +12,8 @@ ul {
   margin-top: 10px;
 }
 
-.navGame {
-  padding: 8px;
-  cursor: pointer;
-  a {
-    color: rgba(255,255,255,.5);
-    text-decoration: none;
-  }
-}
-
-.logo{
-  height: 70px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    border-radius: 6px;
-    background-color: lightsteelblue;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px darkorange;
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-radius: 6px;
-}
-
-.dropdown-content a:hover {
-  background-color: #007bff
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 .gameImage {
   max-height: 280px;
-}
-
-.loggedInNav {
-  display: flex;
-  justify-content: space-around;
 }
 
 .commentContent {
@@ -133,10 +63,6 @@ ul {
   position: fixed;
 }
 
-a:hover {
-  color: darkorange;
-  text-decoration: none;
-}
 
 .commentBy{
   color: white;
@@ -144,26 +70,10 @@ a:hover {
 
 .successFlash {
   background-color: #6292bc;
+  font-weight: bold;
 }
 
 .dangerFlash {
   background-color: darkorange;
-}
-
-footer {
-  background: lightsteelblue;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #FFF, lightsteelblue);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #FFF, lightsteelblue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 400;
-  height: 30px;
-}
-
-.userName {
-  text-transform: uppercase;
   font-weight: bold;
-  color: darkorange;
-  font-size: 30px;
 }
