@@ -38,7 +38,7 @@ Your app must:
 
 ### [](https://github.com/omrprt/wdi-second-project#approach-taken)Approach Taken
 
-1. I started with a very short brain storming session a system that will 
+1. I started with a very short brain storming session a system that will
 2. Worked on the wireframe.
 3. Worked on the file structure.
 4. Worked on the RESTful routes.
@@ -57,7 +57,7 @@ Your app must:
 To create this project I used the following technologies:
 
 ### [](https://github.com/omrprt/wdi-second-project#dependencies)Dependencies
-- bcrypt 
+- bcrypt
 - bluebird
 - body-parser
 - ejs
@@ -118,10 +118,14 @@ How can the app be extended and improved:
 
 - Improve user experience:
   * Futher improve how information is presented in order to have a better user experience.
+  * Friend people
+  * Add a introduction to board game view.
+
+- Utilize APIs:
+  * Would like to include an Amazon and Ebay API.
 
 ## Acknowledgments
 * Would like to thank my instructors at GA, and classmates.
 * It was inspired by my enjoyment of board games.
 * Thanks to Robert, Brian and Josh for their feedback.
 * Seed data information was sourced from BoardGameGeek, Amazon, Wikipedia.
-
