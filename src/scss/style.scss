@@ -69,11 +69,27 @@
 }
 
 .successFlash {
-  background-color: #6292bc;
+  background-color: #337AB7;
   font-weight: bold;
 }
 
 .dangerFlash {
   background-color: darkorange;
   font-weight: bold;
+}
+
+.dateIcon {
+  color: darkorange;
+}
+
+.rulesIcon {
+  color: #FFD166;
+}
+
+.winIcon {
+  color:#06D6A0;
+}
+
+.notesIcon {
+  color: #FF88DC;
 }

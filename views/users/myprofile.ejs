@@ -54,11 +54,11 @@
             <p class="card-header"><strong><%= log.game.title %></strong></p>
             <div class="card-body row">
               <ul>
-              <li>Played On: <%= log.datePlayed %></li>
-              <li>Wining Condition: <%= log.winCondition %></li>
-              <li>Game Result:<%= log.result %></li>
-              <li>Game Notes: <%= log.gameNotes %></li>
-              <li>Picture it:<%= log.endGameImage %></li>
+              <li><%= log.endGameImage %></li>
+              <li><i class="fa fa-calendar fa-2x dateIcon" aria-hidden="true"> </i>  <%= log.datePlayed %></li>
+              <li><i class="fa fa-book fa-2x rulesIcon" aria-hidden="true"> </i>  <%= log.winCondition %></li>
+              <li><i class="fa fa-trophy fa-2x winIcon" aria-hidden="true"> </i>  <%= log.result %></li>
+              <li><i class="fa fa-commenting fa-flip-horizontal fa-2x notesIcon" aria-hidden="true"> </i>  <%= log.gameNotes %></li>
               </ul>
             </div>
           </div>

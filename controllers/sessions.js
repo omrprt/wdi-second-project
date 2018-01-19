@@ -17,7 +17,7 @@ function sessionsCreate(req, res, next) {
       req.user           = user;
 
       req.flash('successFlash', `Welcome back, ${user.username}!`);
-      res.redirect('back');
+      res.redirect('/');
     })
     .catch(next);
 }
