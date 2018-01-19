@@ -65,7 +65,7 @@
       <% game.comments.forEach((comment) => { %>
         <div class="commentContent">
           <p><span class="commentBy"><%= comment.createdBy.username %>: </span>
-            <%= comment.content %>
+             <%= comment.content %>
           </p>
           <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
             <form method="POST" action="/games/<%= game.id %>/comments/<%= comment.id %>">
