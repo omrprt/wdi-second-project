@@ -3,8 +3,8 @@
 ## Meeple Gamer
 
 <figure>
-  <a href="#"><img src="./images/projectphotos/workingstyling.png"></a>
-  <figcaption><a href="#" title="Meeple Gamer">This is my second project at GA: it is a board game hub, where you can explore board games, track board games you own, add them to a wish list, log your game plays, and comment on board games.</a></figcaption>
+  <a href="#"><img src="./src/assets/images/projectphotos/workingstyling.png"></a>
+  <figcaption>This is my second project at GA: it is a board game hub, where you can explore board games, track board games you own, add them to a wish list, log your game plays, and comment on board games.</figcaption>
 </figure>
 
 ### [](https://github.com/omrprt/wdi-second-project#setup)Installation and setup
@@ -19,14 +19,92 @@
 - [View on Heroku](https://meeplegamer.herokuapp.com/)
 - [View on Github](https://github.com/omrprt/wdi-second-project)
 
-wdi-first-project#approach-taken)Approach Taken
+### [](https://github.com/omrprt/wdi-second-project#approach-taken)Approach Taken
 
-
-
-1. I started with a very short brain storming session of games and things I like.
+1. I started with a very short brain storming session a system that will 
 2. Worked on the wireframe.
-3. Worked on the CSS.
-4. Worked on the JavaScript.
-5. Had UX feedback.
-6. Worked on making it responsive.
-7. looped again and again.
+3. Worked on the file structure.
+4. Worked on the RESTful routes.
+5. Coded the EJS pages
+6. Added styling using scss
+7. Had UX feedback.
+8. looped again and again.
+
+<figure>
+  <a href="#"><img src="./src/assets/images/projectphotos/wirefram.png"></a>
+  <figcaption>Wireframed using Balsamiq</figcaption>
+</figure>
+
+### [](https://github.com/omrprt/wdi-second-project#technologies-used)Technologies used
+
+To create this project I used the following technologies:
+
+### [](https://github.com/omrprt/wdi-second-project#dependencies)Dependencies
+- bcrypt 
+- bluebird
+- body-parser
+- ejs
+- express
+- express-ejs-layouts
+- express-flash
+- express-session
+- method-override
+- mongoose
+- morgan
+
+###Others
+
+- HTML5
+- SCSS
+- Javascript (ECMAScript 6)
+- jQuery
+- Git
+- Github
+- Heroku
+- Atom
+- GIMP
+- GULP
+- https://balsamiq.com/
+- https://trello.com/
+- https://fonts.google.com/
+- https://uigradients.com/
+- https://coolors.co/
+- https://logomakr.com/
+- http://fontawesome.io/
+
+### [](https://github.com/omrprt/wdi-second-project#challenges-faced)Challenges Faced
+
+-Drying up the code
+-Populating nested schemas
+-Choosing a user friendly styling
+
+
+<figure>
+  <a href="#"><img src="./src/assets/images/projectphotos/initialstyling.png"></a>
+  <figcaption>Original color template</figcaption>
+</figure>
+
+### [](https://github.com/omrprt/wdi-second-project#where-next)Where next?
+
+How can the app be extended and improved:
+
+- making some of the schema's editable:
+ * currently can't update profile information
+ * currenlty can't delete play log
+
+- upload files:
+  * Add a upload file features, for pictures.
+
+- Improving the code:
+  * I am certain that there are areas of my code to be more efficient and dryer.
+  * the code could be refactored further.
+
+- Improve user experience:
+  * Futher improve how information is presented in order to have a better user experience.
+
+## Acknowledgments
+* Would like to thank my instructors at GA, and classmates.
+* It was inspired by my enjoyment of board games.
+* Thanks to Robert, Brian and Josh for their feedback.
+* Seed data information was sourced from BoardGameGeek, Amazon, Wikipedia.
+
