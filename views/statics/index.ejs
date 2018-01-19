@@ -3,44 +3,53 @@
     <% if (locals.isLoggedIn) { %>
       <div class="card">
         <h5 class="card-header"><strong>My Lists</strong></h5>
-      <div class="card-body row">
-        <h6 class="card-title">Collection: </h6>
+        <div class="card-body row">
+          <h6 class="card-title">Collection: </h6>
           <ul>
             <% user.collectionLog.forEach((game) => { %>
-              <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
+              <li>
+                <a href="/games/<%= game.id %>">
+                  <%= game.title %>
+                </a>
+              </li>
               <% }); %>
           </ul>
-      </div>
-      <div class="underline"></div>
-      <div class="card-body row">
-        <h6 class="card-title">Wish List: </h6>
+        </div>
+        <div class="underline"></div>
+        <div class="card-body row">
+          <h6 class="card-title">Wish List: </h6>
           <ul>
-          <% user.wishList.forEach((game) => { %>
-          <li><a href="/games/<%= game.id %>"><%= game.title %></a></li>
-          <% }); %>
+            <% user.wishList.forEach((game) => { %>
+              <li>
+                <a href="/games/<%= game.id %>">
+                  <%= game.title %>
+                </a>
+              </li>
+              <% }); %>
           </ul>
+        </div>
       </div>
-      </div>
-          <% } else { %>
-            <h3>Login</h3>
-            <form method="POST" action="/login">
-            <div class="form-group">
+      <% } else { %>
+        <h3>Login</h3>
+        <form method="POST" action="/login">
+          <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
-            </div>
-            <div class="form-group">
+          </div>
+          <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
-            </div>
-            <button type="submit" class="btn btn-blue btn-block">Login</button>
-            </form>
-            <% } %>
+          </div>
+          <button type="submit" class="btn btn-blue btn-block">Login</button>
+        </form>
+        <% } %>
   </div>
   <div class="col-lg-9">
     <div class="row">
-    <h2>Welcome</h2>
-  </div>
-    <p>Meeple Gamer is a web development project coded by Omar Portillo at GA for the web development immersive course, cohort 31.<p>
-      <p>The theme of this website is board games.  You should be able to add and remove, from a list of boardgames, to your collection and wish list, as well keep a play log</p>
+      <h2>Welcome</h2>
+    </div>
+    <p>Meeple Gamer is a web development project coded by Omar Portillo at GA for the web development immersive course, cohort 31.
+      <p>
+        <p>The theme of this website is board games. You should be able to add and remove, from a list of boardgames, to your collection and wish list, as well keep a play log</p>
   </div>
 </div>
