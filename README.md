@@ -7,6 +7,23 @@
   <figcaption>This is my second project at GA: it is a board game hub, where you can explore board games, track board games you own, add them to a wish list, log your game plays, and comment on board games.</figcaption>
 </figure>
 
+### Project Brief
+
+Your app must:
+
+* **Have at _least_ 2 models** – one representing a user and one that represents the main resource of your app, e.g. Restaurants
+* **Incude relationships** - embedded or referenced. Make sure you take the time to consider the best approach before building out your models.
+* **The app should include authentication** - with hashed passwords & an authorization flow.
+* **Have complete RESTful routes** for at least one of your resources with all CRUD actions.
+* **You must use SCSS** - as this is a key industry skill.
+* **You should use a CSS framework that has a grid system** - even if the grid is the only part you use from the framework, it is fundamental that you get to grips with rows and columns.
+* **Include wireframes** - that you designed before building the app.
+* Have **semantically clean HTML** - you make sure you write HTML that makes structural sense rather than thinking about how it might look, which is the job of CSS.
+* **Be deployed online** and accessible to the public.
+
+### Bonus
+* **Include data from an API** - to make your app more dynamic, add some data from an API. You might need to consider CORS issues with AJAX and/or the need to store this external data in your app.
+
 ### [](https://github.com/omrprt/wdi-second-project#setup)Installation and setup
 
 #### Run Locally
