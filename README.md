@@ -27,7 +27,7 @@ Your app must:
 ### [](https://github.com/omrprt/wdi-second-project#setup)Installation and setup
 
 #### Run Locally
-- Download or clone the [Github repo](https://github.com/omrprt/wdi-first-project)
+- Download or clone the [Github repo](https://github.com/omrprt/wdi-second-project)
 - Run `gulp` in the terminal to compile the source code and open in the browser
 - Seed `node db/seeds.js` in the terminal to load the seed file.
 
@@ -38,7 +38,7 @@ Your app must:
 
 ### [](https://github.com/omrprt/wdi-second-project#approach-taken)Approach Taken
 
-1. I started with a very short brain storming session a system that will
+1. I started with a very short brain storming session
 2. Worked on the wireframe.
 3. Worked on the file structure.
 4. Worked on the RESTful routes.
@@ -91,9 +91,9 @@ To create this project I used the following technologies:
 
 ### [](https://github.com/omrprt/wdi-second-project#challenges-faced)Challenges Faced
 
--Drying up the code
--Populating nested schemas
--Choosing a user friendly styling
+- Drying up the code
+- Populating nested schemas
+- Choosing a user friendly styling
 
 
 <figure>

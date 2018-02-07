@@ -29,7 +29,6 @@ router.route('/logs/:id')
   .post(secureRoute, playLog.add)
   .delete(secureRoute, playLog.delete);
 
-
 router.route('/myprofile')
   .get(secureRoute, users.myProfile);
 
