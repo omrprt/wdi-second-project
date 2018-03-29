@@ -52,7 +52,7 @@ Your app must:
   <figcaption>Wireframed using Balsamiq</figcaption>
 </figure>
 
-### [](https://github.com/omrprt/wdi-second-project#technologies-used)Technologies used
+### [](https://github.com/omrprt/wdi-second-project#technologies-used)Technologies Used
 
 To create this project I used the following technologies:
 
@@ -60,7 +60,6 @@ To create this project I used the following technologies:
 - bcrypt
 - bluebird
 - body-parser
-- ejs
 - express
 - express-ejs-layouts
 - express-flash
@@ -69,7 +68,7 @@ To create this project I used the following technologies:
 - mongoose
 - morgan
 
-###Others
+### [](https://github.com/omrprt/wdi-second-project#others)Others
 
 - HTML5
 - SCSS
